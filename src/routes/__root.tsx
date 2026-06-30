@@ -94,6 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "WorkFlow AI Assistant" },
+      { name: "description", content: "WorkFlow AI Assistant automates workplace tasks with Generative AI for enhanced productivity." },
+      { property: "og:description", content: "WorkFlow AI Assistant automates workplace tasks with Generative AI for enhanced productivity." },
+      { name: "twitter:description", content: "WorkFlow AI Assistant automates workplace tasks with Generative AI for enhanced productivity." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c4e83b05-ff64-4945-a9ee-fddfd5201b96/id-preview-5aaccd6f--ce790793-0800-4f1f-a669-6e285909d7f4.lovable.app-1782849703309.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c4e83b05-ff64-4945-a9ee-fddfd5201b96/id-preview-5aaccd6f--ce790793-0800-4f1f-a669-6e285909d7f4.lovable.app-1782849703309.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
