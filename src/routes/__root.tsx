@@ -125,27 +125,49 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const pathname = router.state.location.pathname;
+  const isAuthPage = pathname === "/auth";
 
-  // Hydrate theme on mount
   useEffect(() => {
     const stored = localStorage.getItem("wf_theme");
     if (stored === "dark") document.documentElement.classList.add("dark");
   }, []);
 
+  useEffect(() => {
+    let unsub: (() => void) | undefined;
+    import("@/integrations/supabase/client").then(({ supabase }) => {
+      const { data } = supabase.auth.onAuthStateChange((event) => {
+        if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+        router.invalidate();
+        if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+      });
+      unsub = () => data.subscription.unsubscribe();
+    });
+    return () => unsub?.();
+  }, [router, queryClient]);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full bg-background">
-          <AppSidebar />
-          <div className="flex flex-1 flex-col">
-            <Topbar />
-            <main className="flex-1 p-4 md:p-6 lg:p-8">
-              <Outlet />
-            </main>
+      {isAuthPage ? (
+        <>
+          <Outlet />
+          <Toaster richColors position="top-right" />
+        </>
+      ) : (
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full bg-background">
+            <AppSidebar />
+            <div className="flex flex-1 flex-col">
+              <Topbar />
+              <main className="flex-1 p-4 md:p-6 lg:p-8">
+                <Outlet />
+              </main>
+            </div>
           </div>
-        </div>
-        <Toaster richColors position="top-right" />
-      </SidebarProvider>
+          <Toaster richColors position="top-right" />
+        </SidebarProvider>
+      )}
     </QueryClientProvider>
   );
 }

@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/lib/use-theme";
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({ meta: [{ title: "Settings — WorkFlow AI" }] }),
   component: SettingsPage,
 });

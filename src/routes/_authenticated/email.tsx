@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { generateAI, saveHistory } from "@/lib/ai-client";
 
-export const Route = createFileRoute("/email")({
+export const Route = createFileRoute("/_authenticated/email")({
   head: () => ({ meta: [{ title: "Email Generator — WorkFlow AI" }] }),
   component: EmailPage,
 });

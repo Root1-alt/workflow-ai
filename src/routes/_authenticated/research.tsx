@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { generateAI, saveHistory } from "@/lib/ai-client";
 import { EmptyState, SkeletonOutput } from "./email";
 
-export const Route = createFileRoute("/research")({
+export const Route = createFileRoute("/_authenticated/research")({
   head: () => ({ meta: [{ title: "Research Assistant — WorkFlow AI" }] }),
   component: ResearchPage,
 });

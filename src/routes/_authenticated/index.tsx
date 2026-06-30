@@ -16,7 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getStats, getActivity } from "@/lib/ai-client";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
     meta: [
       { title: "Dashboard — WorkFlow AI Assistant" },
