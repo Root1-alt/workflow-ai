@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { bumpStat, pushActivity } from "@/lib/ai-client";
 
-export const Route = createFileRoute("/chat")({
+export const Route = createFileRoute("/_authenticated/chat")({
   head: () => ({ meta: [{ title: "AI Chatbot — WorkFlow AI" }] }),
   component: ChatPage,
 });

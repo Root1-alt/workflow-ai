@@ -3,7 +3,7 @@ import { Info, Shield, Zap } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/_authenticated/about")({
   head: () => ({ meta: [{ title: "About — WorkFlow AI" }] }),
   component: AboutPage,
 });

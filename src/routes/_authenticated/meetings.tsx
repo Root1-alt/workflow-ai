@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { generateAI, saveHistory } from "@/lib/ai-client";
 import { EmptyState, SkeletonOutput } from "./email";
 
-export const Route = createFileRoute("/meetings")({
+export const Route = createFileRoute("/_authenticated/meetings")({
   head: () => ({ meta: [{ title: "Meeting Summarizer — WorkFlow AI" }] }),
   component: MeetingsPage,
 });

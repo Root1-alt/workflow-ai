@@ -19,7 +19,7 @@ import {
 import { generateAI, saveHistory, bumpStat } from "@/lib/ai-client";
 import { EmptyState, SkeletonOutput } from "./email";
 
-export const Route = createFileRoute("/tasks")({
+export const Route = createFileRoute("/_authenticated/tasks")({
   head: () => ({ meta: [{ title: "Task Planner — WorkFlow AI" }] }),
   component: TasksPage,
 });
